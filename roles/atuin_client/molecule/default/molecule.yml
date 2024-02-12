@@ -21,8 +21,4 @@ provisioner:
 verifier:
   name: ansible
 driver:
-  options:
-    managed: False
-    login_cmd_template: "podman exec -ti {instance} bash"
-    ansible_connection_options:
-      ansible_connection: podman
+  name: docker
