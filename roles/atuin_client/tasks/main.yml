@@ -42,7 +42,7 @@
   block:
     - name: Formulate artifact name
       ansible.builtin.set_fact:
-        atuin_client_artifact: atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-gnu.tar.gz  # noqa yaml[line-length]
+        atuin_client_artifact: atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}.tar.gz  # noqa yaml[line-length]
 
     - name: show values
       ansible.builtin.debug:
@@ -56,14 +56,14 @@
         src: https://github.com/atuinsh/atuin/releases/download/v{{ atuin_client_version }}/{{ atuin_client_artifact }} # noqa yaml[line-length].
         remote_src: true
         dest: "/tmp"
-        include: "atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-gnu/atuin"  # noqa yaml[line-length]
+        include: "atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}/atuin"  # noqa yaml[line-length]
         owner: root
         group: root
         mode: "0755"
 
     - name: Copy atuin to final location
       ansible.builtin.copy:
-        src: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-gnu/atuin # noqa yaml[line-length]
+        src: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}/atuin # noqa yaml[line-length]
         dest: "{{ atuin_client_bin_dir }}"
         remote_src: true
         owner: root
@@ -72,6 +72,6 @@
 
     - name: Remove download directory
       ansible.builtin.file:
-        path: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-gnu"
+        path: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}"
         state: absent
 

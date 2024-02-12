@@ -1,0 +1,17 @@
+name: Molecule Tests
+
+on: push
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+      - uses: gofrolist/molecule-action@v2
+        with:
+          molecule-working-dir: roles/atuin_client
+        env:
+          ANSIBLE_FORCE_COLOR: '1'

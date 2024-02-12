@@ -1,3 +1,4 @@
 ---
 # defaults file for atuin_client
 atuin_client_bin_dir: /usr/local/bin
+atuin_client_libc_variant: gnu
