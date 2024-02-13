@@ -44,7 +44,7 @@
       ansible.builtin.set_fact:
         atuin_client_artifact: atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}.tar.gz  # noqa yaml[line-length]
 
-    - name: show values
+    - name: Show artifact name
       ansible.builtin.debug:
         msg: "{{ atuin_client_artifact }}"
       when:
@@ -74,4 +74,3 @@
       ansible.builtin.file:
         path: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}"
         state: absent
-

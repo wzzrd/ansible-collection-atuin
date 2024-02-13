@@ -7,13 +7,19 @@ platforms:
   - name: ubi8
     image: ubi8/ubi-init
     pre_build_image: true
-    rootless: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
     extra_opts:
       - --arch=x86_64
   - name: ubi9
     image: ubi9/ubi-init
     pre_build_image: true
-    rootless: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
     extra_opts:
       - --arch=x86_64
 provisioner:
@@ -27,7 +33,6 @@ provisioner:
 verifier:
   name: ansible
 driver:
-  name: podman
   options:
     managed: true
     login_cmd_template: "podman exec -ti {instance} bash"

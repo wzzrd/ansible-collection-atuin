@@ -1,5 +1,5 @@
 - name: Verify
-  hosts: molecule
+  hosts: all
   # We disable gather facts because it would fail due to our container not
   # having python installed. This will not prevent use from running 'raw'
   # commands. Most molecule users are expected to use containers that already
@@ -18,3 +18,8 @@
           ansible.builtin.assert:
             that:
               - atuin_stat_result.stat.exists
+
+        - name: Verify we can start atuin
+          ansible.builtin.command:
+            cmd: atuin --version
+          changed_when: false

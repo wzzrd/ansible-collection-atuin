@@ -18,3 +18,8 @@
           ansible.builtin.assert:
             that:
               - atuin_stat_result.stat.exists
+
+        - name: Verify we can start atuin
+          ansible.builtin.command:
+            cmd: atuin --version
+          changed_when: false
