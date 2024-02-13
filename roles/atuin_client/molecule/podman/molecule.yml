@@ -33,8 +33,9 @@ provisioner:
 verifier:
   name: ansible
 driver:
+  name: podman
   options:
-    managed: False
+    managed: true
     login_cmd_template: "podman exec -ti {instance} bash"
     ansible_connection_options:
       ansible_connection: podman
