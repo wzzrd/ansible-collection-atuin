@@ -13,6 +13,6 @@ jobs:
       - uses: gofrolist/molecule-action@v2
         with:
           molecule_working_dir: ${{ github.repository }}/roles/atuin_client
-          molecule_args: --scenario-name docker
+          molecule_args: --scenario-name podman
         env:
           ANSIBLE_FORCE_COLOR: '1'
