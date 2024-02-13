@@ -11,6 +11,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     command: "/usr/sbin/init"
+    rootless: false
     extra_opts:
       - --arch=x86_64
   - name: ubi9
@@ -20,6 +21,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     command: "/usr/sbin/init"
+    rootless: false
     extra_opts:
       - --arch=x86_64
 provisioner:
