@@ -7,21 +7,13 @@ platforms:
   - name: ubi8
     image: ubi8/ubi-init
     pre_build_image: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    command: "/usr/sbin/init"
-    rootless: false
+    rootless: true
     extra_opts:
       - --arch=x86_64
   - name: ubi9
     image: ubi9/ubi-init
     pre_build_image: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    command: "/usr/sbin/init"
-    rootless: false
+    rootless: true
     extra_opts:
       - --arch=x86_64
 provisioner:
