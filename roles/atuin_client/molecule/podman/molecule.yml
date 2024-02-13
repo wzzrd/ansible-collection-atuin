@@ -1,0 +1,40 @@
+---
+dependency:
+  name: galaxy
+  options:
+    requirements-file: requirements.yml
+platforms:
+  - name: ubi8
+    image: ubi8/ubi-init
+    pre_build_image: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
+    extra_opts:
+      - --arch=x86_64
+  - name: ubi9
+    image: ubi9/ubi-init
+    pre_build_image: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
+    extra_opts:
+      - --arch=x86_64
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      ubi8:
+        atuin_client_libc_variant: "musl"
+      ubi9:
+        atuin_client_libc_variant: "gnu"
+verifier:
+  name: ansible
+driver:
+  options:
+    managed: False
+    login_cmd_template: "podman exec -ti {instance} bash"
+    ansible_connection_options:
+      ansible_connection: podman

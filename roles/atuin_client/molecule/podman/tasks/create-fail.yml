@@ -12,4 +12,3 @@
 - name: Display container log
   ansible.builtin.fail:
     msg: "{{ logfile_cmd.stderr }}"
-
