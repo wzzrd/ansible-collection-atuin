@@ -1,0 +1,14 @@
+name: Run ansible-lint on code
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: "${{ github.repository }}"
+      - name: run-ansible-lint
+        uses: ansible/ansible-lint@v24.2.0
