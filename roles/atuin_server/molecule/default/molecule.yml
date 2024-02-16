@@ -7,6 +7,7 @@ platforms:
   - name: ubi8
     image: registry.access.redhat.com/ubi8/ubi-init:latest
     pre_build_image: true
+    cgroupns_mode: host
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     privileged: true
