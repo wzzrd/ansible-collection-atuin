@@ -10,15 +10,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: "${{ github.repository }}"
-      - uses: gofrolist/molecule-action@v2
+      - name: Run molecule tests for atuin_client role
+        uses: gofrolist/molecule-action@v2
         with:
           molecule_working_dir: ${{ github.repository }}/roles/atuin_client
           molecule_args: --scenario-name docker
         env:
           ANSIBLE_FORCE_COLOR: '1'
-      - uses: gofrolist/molecule-action@v2
+      - name: Run molecule tests for atuin_server role
+        uses: gofrolist/molecule-action@v2
         with:
           molecule_working_dir: ${{ github.repository }}/roles/atuin_server
-          molecule_args: --scenario-name default --driver docker
+          molecule_args: --scenario-name default --driver-name docker
         env:
           ANSIBLE_FORCE_COLOR: '1'
