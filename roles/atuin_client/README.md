@@ -1,38 +1,57 @@
-Role Name
+wzzrd.atuin_client
 =========
 
-A brief description of the role goes here.
+Configures atuin client component
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+It is mandatory to provide a value for the `atuin_client_version` variable.
+
+The role will fail without a value for `atuin_client_version`. This variable is used by the `wzzrd.atuin_client` role to install the atuin binary. It is expected to be a string naming an atuin version: `18.0.1` is a valid value that will make the role succeeed.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Variable name | Default value | Meaning | Mandatory |
+|---------------|---------------|---------|-----------|
+| atuin_client_version | None | Version of atuin to install | true |
+| atuin_client_bin_dir | /usr/local/bin | Location for the atuin binary | false |
+| atuin_client_libc_variant | gnu | Which libc implementation to download a binary for | false |
+
+The `atuin_client_libc_variant` expects one of two options: musl or gnu. Choosing gnu will make the role download the atuin binary compiled for an OS with a recent build of glibc. Choosing musl will download a binary compiled and statically linked to the musl libc implementation. This allows you to run atuin on systems with incompatible versions of glibc.
+
+Mind that the musl build (at the time of writing) is only available for x86_64 Linux. Trying to install that build on aarch64 Linux will not work.
+
+The only resort in that case is to use cargo to install atuin. I might implement that in a future version of this role.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+This role is used in the following way in a playbook:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: atuin_clients
+  vars:
+    atuin_client_version: 18.0.1
+
+  roles:
+    - role: wzzrd.atuin.atuin_client
+```
 
 License
 -------
 
-BSD
+BSD-3-Clause
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role was created by Maxim Burgerhout <maxim@wzzrd.com> as part fo the wzzrd.atuin Ansible collection.
+
+Please log issues at https://github.com/wzzrd/ansible-collection-atuin.

@@ -1,3 +1,41 @@
 # Ansible Collection - wzzrd.atuin
 
-Documentation for the collection.
+This collection enables the deployment and configuration of the atuin binary and required configuration.
+
+The collection contains both a client and a server role. The server role depends on the client role for installation of the binary, after which the server role configures the server and the systemd service.
+
+Each role contains a README.md file explaining the optional and mandatory variables.
+
+Example Playbooks
+-----------------
+
+This role is used in the following way in a playbook:
+
+```yaml
+- hosts: atuin_server
+  vars:
+    atuin_client_version: 18.0.1
+    atuin_server_db_uri: "postgres://atuin:atuinpw@dbserver/atuindb"
+
+  roles:
+    - role: wzzrd.atuin.atuin_server
+
+- hosts: atuin_clients
+  vars:
+    atuin_client_version: 18.0.1
+
+  roles:
+    - role: wzzrd.atuin.atuin_client
+```
+
+License
+-------
+
+BSD-3-Clause
+
+Author Information
+------------------
+
+This role was created by Maxim Burgerhout <maxim@wzzrd.com> as part fo the wzzrd.atuin Ansible collection.
+
+Please log issues at https://github.com/wzzrd/ansible-collection-atuin.
