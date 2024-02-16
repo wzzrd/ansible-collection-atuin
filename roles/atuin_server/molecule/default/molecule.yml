@@ -5,7 +5,7 @@ dependency:
     requirements-file: requirements.yml
 platforms:
   - name: ubi8
-    image: ubi8/ubi-init
+    image: registry.access.redhat.com/ubi8/ubi-init:latest
     pre_build_image: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -14,7 +14,7 @@ platforms:
     extra_opts:
       - --arch=x86_64
   - name: ubi9
-    image: ubi9/ubi-init
+    image: registry.access.redhat.com/ubi9/ubi-init:latest
     pre_build_image: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
