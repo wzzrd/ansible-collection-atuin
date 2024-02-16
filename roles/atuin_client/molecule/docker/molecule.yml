@@ -29,5 +29,3 @@ provisioner:
         atuin_client_libc_variant: "gnu"
 verifier:
   name: ansible
-driver:
-  name: docker
