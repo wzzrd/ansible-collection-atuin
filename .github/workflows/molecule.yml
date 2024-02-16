@@ -14,7 +14,7 @@ jobs:
         uses: gofrolist/molecule-action@v2
         with:
           molecule_working_dir: ${{ github.repository }}/roles/atuin_client
-          molecule_args: --scenario-name docker
+          molecule_args: --scenario-name docker --driver-name docker
         env:
           ANSIBLE_FORCE_COLOR: '1'
       - name: Run molecule tests for atuin_server role
