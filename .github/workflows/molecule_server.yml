@@ -3,7 +3,7 @@ name: Molecule Tests atuin server
 on: push
 
 jobs:
-  molecule:
+  molecule-atuin-server:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
