@@ -1,0 +1,36 @@
+## {{ ansible_managed }}
+
+## host to bind, can also be passed via CLI args
+host = "{{ atuin_server_host }}"
+
+## port to bind, can also be passed via CLI args
+port = "{{ atuin_server_port }}"
+
+## whether to allow anyone to register an account
+open_registration = {{ atuin_server_open_registration | string | lower }}
+
+## URI for postgres (using development creds here)
+db_uri="{{ atuin_server_db_uri }}"
+
+## Maximum size for one history entry
+max_history_length = {{ atuin_server_max_history_length }}
+
+## Maximum size for one record entry
+## 1024 * 1024 * 1024
+max_record_size = {{ atuin_server_max_record_size }}
+
+## Webhook to be called when user registers on the servers
+# register_webhook_username = ""
+
+## Default page size for requests
+page_size = {{ atuin_server_page_size }}
+
+[metrics]
+enable = {{ atuin_server_enable_metrics | string | lower }}
+host = "{{ atuin_server_metrics_host }}"
+port = "{{ atuin_server_metrics_port }}"
+
+[tls]
+enable = {{ atuin_server_enable_tls | string | lower }}
+cert_path = "{{ atuin_server_cert_path }}"
+pkey_path = "{{ atuin_server_pkey_path }}"

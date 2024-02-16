@@ -1,0 +1,17 @@
+---
+# defaults file for atuin_server
+atuin_server_user: atuin
+atuin_server_group: atuin
+atuin_server_home: /home/atuin
+atuin_server_host: "{{ ansible_default_ipv4.address }}"
+atuin_server_port: 8888
+atuin_server_open_registration: false
+atuin_server_max_history_length: 8192
+atuin_server_max_record_size: 1073741824
+atuin_server_page_size: 1100
+atuin_server_enable_metrics: false
+atuin_server_metrics_host: 127.0.0.1
+atuin_server_metrics_port: 9001
+atuin_server_enable_tls: false
+atuin_server_cert_path: ""
+atuin_server_pkey_path: ""

@@ -1,0 +1,10 @@
+- name: Prepare containers for molecule tests
+  hosts: ubi8
+  gather_facts: false
+  tasks:
+    - name: Install packages for during tests
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - iproute

@@ -1,0 +1,15 @@
+---
+- name: "Setup systemd service"
+  ansible.builtin.template:
+    src: atuin.service.j2
+    dest: /etc/systemd/system/atuin.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - "Reload systemd"
+    - "Restart atuin"
+
+- name: "Reload systemd"
+  ansible.builtin.systemd:
+    daemon_reload: true

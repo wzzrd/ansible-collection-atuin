@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+[Unit]
+Description=Atuin server
+After=network.target
+
+[Service]
+User={{ atuin_server_user }}
+Group={{ atuin_server_group }}
+ExecStart=/usr/local/bin/atuin server start
+Restart=on-failure
+WorkingDirectory={{ atuin_server_home }}
+
+[Install]
+WantedBy=multi-user.target

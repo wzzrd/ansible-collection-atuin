@@ -1,0 +1,38 @@
+---
+# tasks file for atuin_server
+- name: Include user creation tasks
+  ansible.builtin.include_tasks: create_user.yml
+
+- name: "Create atuin home directory"
+  ansible.builtin.file:
+    path: "{{ atuin_server_home }}"
+    state: directory
+    owner: "{{ atuin_server_user }}"
+    group: "{{ atuin_server_group }}"
+    mode: '0755'
+
+- name: Include systemd unit file tasks
+  ansible.builtin.include_tasks: systemd_unit.yml
+
+- name: "Create atuin config directory"
+  ansible.builtin.file:
+    path: "{{ atuin_server_home }}/.config/atuin"
+    state: directory
+    owner: "{{ atuin_server_user }}"
+    group: "{{ atuin_server_group }}"
+    mode: "0750"
+
+- name: "Configure atuin"
+  ansible.builtin.template:
+    src: server.toml.j2
+    dest: "{{ atuin_server_home }}/.config/atuin/server.toml"
+    owner: "{{ atuin_server_user }}"
+    group: "{{ atuin_server_group }}"
+    mode: "0600"
+  notify: "Restart atuin"
+
+- name: "Service atuin"
+  ansible.builtin.service:
+    name: atuin
+    state: started
+    enabled: true

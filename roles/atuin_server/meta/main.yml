@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Maxim Burgerhout
+  description: Role to deploy the atuin shell history tool, server component
+  company: None
+
+  issue_tracker_url: https://github.com/wzzrd/ansible-collection-atuin/issues
+
+  license: BSD-3-Clause
+
+  min_ansible_version: "2.15"
+
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+
+  galaxy_tags:
+    - atuin
+
+dependencies:
+  - role: wzzrd.atuin.atuin_client
