@@ -1,0 +1,19 @@
+name: Molecule Tests atuin server
+
+on: push
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: "${{ github.repository }}"
+      - name: Run molecule tests for atuin_server role
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_working_dir: ${{ github.repository }}/roles/atuin_server
+          molecule_args: --scenario-name default --driver-name docker
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
