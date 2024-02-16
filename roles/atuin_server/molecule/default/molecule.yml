@@ -11,8 +11,6 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     command: "/usr/sbin/init"
-    extra_opts:
-      - --arch=x86_64
   - name: ubi9
     image: registry.access.redhat.com/ubi9/ubi-init:latest
     pre_build_image: true
@@ -20,8 +18,6 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     privileged: true
     command: "/usr/sbin/init"
-    extra_opts:
-      - --arch=x86_64
 provisioner:
   name: ansible
   inventory:
