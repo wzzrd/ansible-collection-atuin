@@ -1,4 +1,4 @@
-name: Molecule Tests atuin client
+name: Lint, test and tag
 
 on: push
 
@@ -43,9 +43,15 @@ jobs:
 
   tag-new-versions:
     runs-on: ubuntu-latest
+    needs:
+      - molecule-atuin-client
+      - molecule-atuin-server
+      - lint-all-files
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: salsify/action-detect-and-tag-new-version@v2
         with:
           version-command: |
