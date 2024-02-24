@@ -40,6 +40,12 @@ Dependencies
 
 This role depends on the `wzzrd.atuin_client role`, distributed in the same collection. The `atuin_client` role handles the download of the correct binary (and possibly upgrading an existing binary), the `atuin_server` role handles the server configuration, the systemd unit file, and the ownership of the atuin server process.
 
+Compatibility
+-------------
+
+This role is compatible with EL8 and EL9 systems, and has been automatically tested through molecule on ubi8 and ubi9 container images.
+
+
 Example Playbook
 ----------------
 

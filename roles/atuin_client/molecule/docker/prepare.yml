@@ -6,3 +6,8 @@
       ansible.builtin.package:
         name: tar
         state: present
+
+    - name: Add the user 'johnc'
+      ansible.builtin.user:
+        name: johnc
+        comment: John Connor

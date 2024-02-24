@@ -15,3 +15,5 @@
     - role: atuin_client
       vars:
         atuin_client_version: 18.0.0
+        atuin_client_users:
+          - johnc

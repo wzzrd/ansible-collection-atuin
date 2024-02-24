@@ -1,0 +1,12 @@
+- name: Make sure configuration directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/atuin"
+    owner: "{{ item }}"
+    mode: "0750"
+
+- name: Configure atuin client
+  ansible.builtin.template:
+    path: "{{ ansible_env.HOME }}/.config/atuin/config.toml"
+    src: config.toml.j2
+    owner: "{{ item }}"
+    mode: "0640"

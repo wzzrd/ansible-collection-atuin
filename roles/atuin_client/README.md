@@ -3,6 +3,8 @@ wzzrd.atuin_client
 
 Configures atuin client component
 
+The current version of this role does *not* provide functionality to log into an atuin server. It does configure the client for selected users through `config.toml`, but you will have to run `atuin login` on systems yourself after using this role. Future versions of this role might include this functionality as well.
+
 Requirements
 ------------
 
@@ -29,6 +31,11 @@ Dependencies
 ------------
 
 None
+
+Compatibility
+-------------
+
+This role is compatible with EL8 and EL9 systems, and has been automatically tested through molecule on ubi8 and ubi9 container images.
 
 Example Playbook
 ----------------

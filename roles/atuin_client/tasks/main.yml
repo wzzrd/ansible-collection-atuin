@@ -75,5 +75,11 @@
 
     - name: Remove download directory
       ansible.builtin.file:
-        path: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}"
+        path: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}
         state: absent
+
+- name: Configure atuin client
+  ansible.builtin.include_tasks: users.yml
+  loop: "{{ atuin_client_users }}"
+  when: atuin_client_users is defined
+  tags: [user_config]

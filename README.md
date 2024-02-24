@@ -28,7 +28,11 @@ This role is used in the following way in a playbook:
     - role: wzzrd.atuin.atuin_client
 ```
 
-License
+Compatibility
+-------------
+
+The roles in this collection are compatible with EL8 and EL9 systems, and have been automatically tested through molecule on ubi8 and ubi9 container images.
+
 -------
 
 BSD-3-Clause
