@@ -3,7 +3,7 @@
 atuin_server_user: atuin
 atuin_server_group: atuin
 atuin_server_home: /home/atuin
-atuin_server_host: "{{ ansible_default_ipv4.address }}"
+atuin_server_host: 127.0.0.1
 atuin_server_port: 8888
 atuin_server_open_registration: false
 atuin_server_max_history_length: 8192

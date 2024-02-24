@@ -8,10 +8,10 @@ atuin_client_bin_dir: /usr/local/bin
 atuin_client_libc_variant: gnu
 
 ## where to store your database, default is your system data directory
-atuin_client_db_path: "~/.history.db"
+atuin_client_db_path: "~/.local/share/atuin/history.db"
 
 ## where to store your encryption key, default is your system data directory
-atuin_client_key_path: "~/.key"
+atuin_client_key_path: "~/.local/share/atuin/key"
 
 ## where to store your auth session token, default is your system data directory
 atuin_client_session_path: "~/.local/share/atuin/session"
