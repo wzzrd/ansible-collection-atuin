@@ -22,6 +22,9 @@ This role is used in the following way in a playbook:
 
 - hosts: atuin_clients
   vars:
+    atuin_client_users:
+      - johnc
+      - joeb
     atuin_client_version: 18.0.1
 
   roles:

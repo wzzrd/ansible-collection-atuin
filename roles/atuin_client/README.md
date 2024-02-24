@@ -20,12 +20,19 @@ Role Variables
 | atuin_client_version | None | Version of atuin to install | true |
 | atuin_client_bin_dir | /usr/local/bin | Location for the atuin binary | false |
 | atuin_client_libc_variant | gnu | Which libc implementation to download a binary for | false |
+| atuin_client_users | None | List of users to create a configuration file for | false |
 
 The `atuin_client_libc_variant` expects one of two options: musl or gnu. Choosing gnu will make the role download the atuin binary compiled for an OS with a recent build of glibc. Choosing musl will download a binary compiled and statically linked to the musl libc implementation. This allows you to run atuin on systems with incompatible versions of glibc.
 
 Mind that the musl build (at the time of writing) is only available for x86_64 Linux. Trying to install that build on aarch64 Linux will not work.
 
 The only resort in that case is to use cargo to install atuin. I might implement that in a future version of this role.
+
+The `atuin_client_users` variable can be used to pass a list of usernames to the role.
+The role will iterate over this list and create a configuration file based for each
+user. This configuration file is based on the values provided to this role and the
+contents of `templates/config.toml.j2`. If the user changes this file, subsequent runs
+of this role will *not* overwrite it.
 
 Please see the `defaults/main.yml` file for the other configurable variables, their
 default values and an explanation of what they are for.
@@ -48,6 +55,9 @@ This role is used in the following way in a playbook:
 ```yaml
 - hosts: atuin_clients
   vars:
+    atuin_client_users:
+      - johnc
+      - joeb
     atuin_client_version: 18.0.1
 
   roles:
