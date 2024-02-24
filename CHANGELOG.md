@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0]
+
+#### Added
+
+- Iterate over list of users and build a configuration file for them
+- Drop podman molecule scenario in favor of docker for now
+
+#### Changed
+
+- Change default listen address from default_ipv4 to 127.0.0.1
+
+## [1.0.1]
+
+- First version uploaded to Ansible Galaxy
+
 ## [1.0.0]
 
 ### Changed

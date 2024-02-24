@@ -22,7 +22,7 @@ Role Variables
 | atuin_server_user | atuin | The name of the user owning the atuin server process | false |
 | atuin_server_group | atuin | The name of the group owning the atuin server process | false |
 | atuin_server_home | /home/atuin | The home directory for the atuin server user | false |
-| atuin_server_host | "{{ ansible_default_ipv4.address }}" | IP address the atuin server process will listen on | false |
+| atuin_server_host | 127.0.0.1 | IP address the atuin server process will listen on | false |
 | atuin_server_port | 8888 | The port the atuin server process will listen on | false |
 | atuin_server_open_registration | false | Whether or not the server will freely allow registration | false |
 | atuin_server_max_history_length | 8192 | Maximum length of one history entry | false |

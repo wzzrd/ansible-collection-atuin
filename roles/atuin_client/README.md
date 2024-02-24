@@ -27,6 +27,9 @@ Mind that the musl build (at the time of writing) is only available for x86_64 L
 
 The only resort in that case is to use cargo to install atuin. I might implement that in a future version of this role.
 
+Please see the `defaults/main.yml` file for the other configurable variables, their
+default values and an explanation of what they are for.
+
 Dependencies
 ------------
 
