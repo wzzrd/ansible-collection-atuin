@@ -36,6 +36,7 @@ Compatibility
 
 The roles in this collection are compatible with EL8 and EL9 systems, and have been automatically tested through molecule on ubi8 and ubi9 container images.
 
+License
 -------
 
 BSD-3-Clause

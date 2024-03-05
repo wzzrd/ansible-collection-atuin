@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.2]
+
+#### Added
+
+- Added .gitleads.toml to repo to prevent security scanners from barfing over fake
+  PostgreSQL password
+
+#### Added
+
+## [2.0.1]
+
+#### Added
+
+- Add some documentation on the atuin_client_users variable
+
 ## [2.0.0]
 
 #### Added
