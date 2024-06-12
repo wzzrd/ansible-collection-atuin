@@ -6,7 +6,7 @@
   # have python installed in order to avoid notable delays installing it.
   gather_facts: false
   vars:
-    atuin_client_version: 18.0.1
+    atuin_client_version: 18.3.0
     atuin_server_db_uri: "postgres://atuin:atuin@{{ atuin_server_host }}/atuin"
 
   pre_tasks:
