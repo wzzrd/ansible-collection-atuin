@@ -35,7 +35,7 @@
         - debug
 
 - name: Download and install new binary, if needed, for old atuin
-  when: 
+  when:
     - (detected_version is not defined) or
       (atuin_client_version != detected_version)
     - atuin_client_version is version('18.3.0', '<')
@@ -81,7 +81,7 @@
         state: absent
 
 - name: Download and install new binary, if needed, for new atuin
-  when: 
+  when:
     - (detected_version is not defined) or
       (atuin_client_version != detected_version)
     - atuin_client_version is version('18.3.0', '>=')
