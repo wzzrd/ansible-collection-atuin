@@ -1,14 +1,14 @@
 ---
-- name: "Create atuin group"
+- name: Create atuin group
   ansible.builtin.group:
     name: "{{ atuin_server_group }}"
     system: true
-    state: "present"
+    state: present
 
-- name: "Create atuin user"
+- name: Create atuin user
   ansible.builtin.user:
     name: "{{ atuin_server_user }}"
-    comment: "atuin server user"
+    comment: atuin server user
     group: "{{ atuin_server_group }}"
     home: "{{ atuin_server_home }}"
     shell: /sbin/nologin

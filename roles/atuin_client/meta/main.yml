@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Maxim Burgerhout
   description: Role to deploy the atuin shell history tool

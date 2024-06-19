@@ -1,3 +1,4 @@
+---
 - name: Get user info for {{ item }}
   ansible.builtin.getent:
     database: passwd

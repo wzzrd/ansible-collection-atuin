@@ -1,3 +1,4 @@
+---
 - name: Prepare containers for molecule tests
   hosts: ubi8
   gather_facts: false

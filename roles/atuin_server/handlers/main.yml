@@ -1,9 +1,9 @@
 ---
-- name: "Restart atuin"
+- name: Restart atuin
   ansible.builtin.service:
     name: atuin
     state: restarted
 
-- name: "Reload systemd"
+- name: Reload systemd
   ansible.builtin.systemd:
     daemon_reload: true
