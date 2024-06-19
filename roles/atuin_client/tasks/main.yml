@@ -36,15 +36,14 @@
 
 - name: Download and install new binary, if needed, for old atuin
   when:
-    - (detected_version is not defined) or
-      (atuin_client_version != detected_version)
+    - (detected_version is not defined) or (atuin_client_version != detected_version)
     - atuin_client_version is version('18.3.0', '<')
   tags:
     - version
   block:
     - name: Formulate artifact name
       ansible.builtin.set_fact:
-        atuin_client_artifact: atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}.tar.gz  # noqa yaml[line-length]
+        atuin_client_artifact: atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}.tar.gz # noqa yaml[line-length]
 
     - name: Show artifact name
       ansible.builtin.debug:
@@ -57,8 +56,8 @@
       ansible.builtin.unarchive:
         src: https://github.com/atuinsh/atuin/releases/download/v{{ atuin_client_version }}/{{ atuin_client_artifact }} # noqa yaml[line-length].
         remote_src: true
-        dest: "/tmp"
-        include: "atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}/atuin"  # noqa yaml[line-length]
+        dest: /tmp
+        include: atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}/atuin # noqa yaml[line-length]
         owner: root
         group: root
         mode: "0755"
@@ -82,15 +81,14 @@
 
 - name: Download and install new binary, if needed, for new atuin
   when:
-    - (detected_version is not defined) or
-      (atuin_client_version != detected_version)
+    - (detected_version is not defined) or (atuin_client_version != detected_version)
     - atuin_client_version is version('18.3.0', '>=')
   tags:
     - version
   block:
     - name: Formulate artifact name
       ansible.builtin.set_fact:
-        atuin_client_artifact: atuin-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}.tar.gz  # noqa yaml[line-length]
+        atuin_client_artifact: atuin-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}.tar.gz # noqa yaml[line-length]
 
     - name: Show artifact name
       ansible.builtin.debug:
@@ -103,8 +101,8 @@
       ansible.builtin.unarchive:
         src: https://github.com/atuinsh/atuin/releases/download/v{{ atuin_client_version }}/{{ atuin_client_artifact }} # noqa yaml[line-length].
         remote_src: true
-        dest: "/tmp"
-        include: "atuin-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}/atuin"  # noqa yaml[line-length]
+        dest: /tmp
+        include: atuin-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}/atuin # noqa yaml[line-length]
         owner: root
         group: root
         mode: "0755"

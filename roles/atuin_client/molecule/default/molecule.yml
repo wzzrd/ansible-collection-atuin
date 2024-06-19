@@ -10,7 +10,7 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
-    command: "/usr/sbin/init"
+    command: /usr/sbin/init
     platform: linux/amd64
   - name: ubi9
     image: registry.access.redhat.com/ubi9/ubi-init:latest
@@ -19,15 +19,15 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     privileged: true
-    command: "/usr/sbin/init"
+    command: /usr/sbin/init
     platform: linux/amd64
 provisioner:
   name: ansible
   inventory:
     host_vars:
       ubi8:
-        atuin_client_libc_variant: "musl"
+        atuin_client_libc_variant: musl
       ubi9:
-        atuin_client_libc_variant: "gnu"
+        atuin_client_libc_variant: gnu
 verifier:
   name: ansible
