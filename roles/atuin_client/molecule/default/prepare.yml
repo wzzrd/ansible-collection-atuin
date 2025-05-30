@@ -2,24 +2,11 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Gather minimal facts
-      ansible.builtin.setup:
-        filter: 
-          - ansible_hostname
-
     - name: Install tar for during tests
       ansible.builtin.dnf:
         name: tar
         state: present
         use_backend: dnf4
-      when: ansible_hostname == "ubi8"
-
-    - name: Install tar for during tests
-      ansible.builtin.dnf:
-        name: tar
-        state: present
-        use_backend: dnf5
-      when: ansible_hostname == "ubi9"
 
     - name: Add the user 'johnc'
       ansible.builtin.user:
