@@ -6,6 +6,15 @@
       ansible.builtin.dnf:
         name: tar
         state: present
+        use_backend: dnf4
+      when: hostname == "ubi8"
+
+    - name: Install tar for during tests
+      ansible.builtin.dnf:
+        name: tar
+        state: present
+        use_backend: dnf5
+      when: hostname == "ubi9"
 
     - name: Add the user 'johnc'
       ansible.builtin.user:
