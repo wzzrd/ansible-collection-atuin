@@ -22,6 +22,7 @@
           - --version
       register: version_output
       changed_when: false
+      check_mode: false
 
     - name: Store detected version of later
       ansible.builtin.set_fact:
@@ -62,6 +63,7 @@
         owner: root
         group: root
         mode: "0755"
+      register: atuin_download
 
     - name: Copy atuin to final location
       ansible.builtin.copy:
@@ -71,6 +73,7 @@
         owner: root
         group: root
         mode: "0755"
+      when: not ansible_check_mode or not atuin_download.skipped | default(false)
       notify:
         - Gather service facts
         - Restart atuin service
@@ -79,6 +82,7 @@
       ansible.builtin.file:
         path: /tmp/atuin-v{{ atuin_client_version }}-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}
         state: absent
+      when: not ansible_check_mode or not atuin_download.skipped | default(false)
 
 - name: Download and install new binary, if needed, for new atuin
   when:
@@ -108,6 +112,7 @@
         owner: root
         group: root
         mode: "0755"
+      register: atuin_download
 
     - name: Copy atuin to final location
       ansible.builtin.copy:
@@ -117,6 +122,7 @@
         owner: root
         group: root
         mode: "0755"
+      when: not ansible_check_mode or not atuin_download.skipped | default(false)
       notify:
         - Gather service facts
         - Restart atuin service
@@ -125,6 +131,7 @@
       ansible.builtin.file:
         path: /tmp/atuin-{{ ansible_architecture }}-unknown-linux-{{ atuin_client_libc_variant }}
         state: absent
+      when: not ansible_check_mode or not atuin_download.skipped | default(false)
 
 - name: Configure atuin client
   ansible.builtin.include_tasks: users.yml
