@@ -2,6 +2,11 @@
   hosts: all
   gather_facts: false
   tasks:
+    - name: Gather minimal facts
+      ansible.builtin.setup:
+        filter: 
+          - ansible_hostname
+
     - name: Install tar for during tests
       ansible.builtin.dnf:
         name: tar
