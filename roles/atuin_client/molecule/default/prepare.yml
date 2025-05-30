@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
     - name: Install tar for during tests
-      ansible.builtin.package:
+      ansible.builtin.dnf:
         name: tar
         state: present
 
