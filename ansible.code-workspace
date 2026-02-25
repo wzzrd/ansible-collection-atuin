@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"name": "atuin collection",
+			"path": "/projects/ansible-collection-atuin"
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"redhat.vscode-yaml",
+            "redhat.ansible",
+            "ms-python.python",
+            "nhancov.ansible-vault",
+            "streetsidesoftware.code-spell-checker",
+            "eamodio.gitlens",
+            "tamasfe.even-better-toml",
+            "usernamehw.errorlens"
+		]
+	},
+	"settings": {
+		"workbench.colorTheme": "Solarized Light",
+		"workbench.preferredDarkColorTheme": "Solarized Light",
+		"workbench.preferredLightColorTheme": "Solarized Light",
+		"editor.wordWrap": "on",
+		"files.autoSave": "off"
+	}
+}
