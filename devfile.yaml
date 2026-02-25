@@ -14,7 +14,7 @@ projects:
 components:
 - name: dev-tools
   container: 
-    image: quay.thuisnet.com/devspaces/dev-tools-maxim:latest
+    image: quay.thuisnet.com/devspaces/converted-ee-maxim:latest
     memoryRequest: 512M
     memoryLimit: 8Gi
     cpuRequest: 250m
