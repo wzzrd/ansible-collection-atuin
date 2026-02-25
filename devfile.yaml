@@ -1,0 +1,16 @@
+# cspell: disable=devspaces
+schemaVersion: 2.2.2
+metadata:
+  name: atuin-editor
+components:
+  - name: tooling-container
+    container:
+      image: quay.thuisnet.com/devspaces/dev-tools-maxim:latest
+      memoryRequest: 512M
+      memoryLimit: 6Gi
+      cpuRequest: 250m
+      cpuLimit: 2000m
+      args: ['tail', '-f', '/dev/null']
+      env:
+        - name: 'ANSIBLE_COLLECTIONS_PATH'
+          value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/ansible-devspaces-demo/collections'
