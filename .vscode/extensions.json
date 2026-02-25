@@ -7,7 +7,6 @@
         "redhat.vscode-openshift-connector",
         "ms-python.black-formatter",
         "streetsidesoftware.code-spell-checker",
-        "eamodio.gitlens",
         "tamasfe.even-better-toml",
         "usernamehw.errorlens"
     ]

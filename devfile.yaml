@@ -1,16 +1,28 @@
-# cspell: disable=devspaces
-schemaVersion: 2.2.2
+schemaVersion: 2.2.0
+attributes:
+  controller.devfile.io/storage-type: per-workspace
 metadata:
   name: atuin-editor
+projects:
+  - name: atuin-editor
+    git:
+      remotes:
+        origin: https://github.com/wzzrd/ansible-collection-atuin.git
+      checkoutFrom:
+        remote: origin
+        revision: main
 components:
-  - name: tooling-container
-    container:
-      image: quay.thuisnet.com/devspaces/dev-tools-maxim:latest
-      memoryRequest: 512M
-      memoryLimit: 6Gi
-      cpuRequest: 250m
-      cpuLimit: 2000m
-      args: ['tail', '-f', '/dev/null']
-      env:
-        - name: 'ANSIBLE_COLLECTIONS_PATH'
-          value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/ansible-devspaces-demo/collections'
+- name: dev-tools
+  container: 
+    image: quay.thuisnet.com/devspaces/dev-tools-maxim:latest
+    memoryRequest: 512M
+    memoryLimit: 8Gi
+    cpuRequest: 250m
+    cpuLimit: 2000m
+    env:
+    - name: HOME
+      value: "/projects/ansible-collection-atuin"
+    - name: VSCODE_DEFAULT_WORKSPACE
+      value: "/projects/ansible-collection-atuin/.code-workspace"
+    - name: 'ANSIBLE_COLLECTIONS_PATH'
+      value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/ansible-collection-atuin/collections'
